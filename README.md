@@ -1,81 +1,138 @@
-# Quizzical
+# Quizzical 🎯
 
-**Quizzical** is a beautiful, feature-rich quiz application built with Flutter. Test your knowledge across a wide variety of categories, customize your quiz experience, and review your performance—all within a modern, responsive, and customizable user interface.
+[![Flutter](https://img.shields.io/badge/Flutter-3.41-02569B?logo=flutter)](https://flutter.dev/)
+[![Dart](https://img.shields.io/badge/Dart-3.7-0175C2?logo=dart)](https://dart.dev/)
+[![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android)](https://www.android.com/)
+[![APK Size](https://img.shields.io/badge/APK%20Size-14--16%20MB-brightgreen)](#-download--install-apk)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+**Quizzical** is a feature-rich, high-performance quiz application built with Flutter. Test your knowledge across a wide variety of categories, configure your challenge, and track your performance with real-time feedback—all in an intuitive, beautifully animated interface with Light & Dark theme support.
+
+---
+
+## 📥 Download & Install (APK)
+
+Ready-to-install Android Release APKs (optimized to **10–20 MB**):
+
+| Architecture | Recommended Devices | APK Size | Direct Download Link |
+| :--- | :--- | :--- | :--- |
+| **ARM 64-bit** (`arm64-v8a`) | Most modern Android smartphones & tablets | **~16.0 MB** | [Download Quizzical (arm64-v8a)](releases/Quizzical-arm64-v8a-release.apk?raw=true) |
+| **ARM 32-bit** (`armeabi-v7a`) | Older Android smartphones | **~14.0 MB** | [Download Quizzical (armeabi-v7a)](releases/Quizzical-armeabi-v7a-release.apk?raw=true) |
+
+> **Note:** Since the APK is signed for direct installation, make sure to enable *"Install from Unknown Sources"* on your Android device when prompted.
+
+---
 
 ## 📱 Screenshots
-*(Consider adding screenshots here)*
+
+<div align="center">
+
+| Welcome Screen | Category Selection | Quiz Configuration |
+| :---: | :---: | :---: |
+| <img src="screenshots/01_welcome_screen.png" width="260" alt="Welcome Screen"/> | <img src="screenshots/02_category_screen.png" width="260" alt="Category Selection Screen"/> | <img src="screenshots/03_quiz_config_screen.png" width="260" alt="Quiz Config Screen"/> |
+
+| Live Quiz Screen | Score & Results | Detailed Answer Review |
+| :---: | :---: | :---: |
+| <img src="screenshots/04_quiz_screen.png" width="260" alt="Quiz Screen"/> | <img src="screenshots/05_results_screen.png" width="260" alt="Results Screen"/> | <img src="screenshots/06_review_answers.png" width="260" alt="Answer Review Modal"/> |
+
+| Score History | Dark Mode Theme |
+| :---: | :---: |
+| <img src="screenshots/07_score_history.png" width="260" alt="Score History"/> | <img src="screenshots/08_dark_mode.png" width="260" alt="Dark Mode Theme"/> |
+
+</div>
+
+---
 
 ## ✨ Key Features
 
-- **Dynamic Quiz Generation**: Fetch questions from a remote API with various difficulty levels and question types.
-- **Category Selection**: Choose from a wide range of topics (e.g., General Knowledge, Science, Sports, History, etc.).
-- **Customizable Quizzes**: Configure the number of questions, difficulty level, and question type before starting.
-- **Interactive Quiz Screen**: An engaging UI with smooth animations to answer questions with real-time feedback.
-- **Detailed Results**: View a comprehensive breakdown of your performance after each quiz, including correct and incorrect answers.
-- **Dark & Light Mode**: Seamlessly switch between dark and light themes for a comfortable viewing experience.
-- **State Management**: Robust state management implemented using the `provider` package.
-- **Beautiful Typography**: Clean and modern text styling utilizing Google Fonts (Nunito).
+- **Personalized Onboarding**: Enter your name to tailor the entire quiz experience.
+- **24+ Diverse Categories**: General Knowledge, Science, Books, Film, Music, Video Games, Board Games, and more.
+- **Customizable Quiz Experience**:
+  - Select question count (5 to 50 questions).
+  - Set per-question timers (10s Speed Run, 20s Standard, 30s Relaxed).
+  - Choose difficulty (Any, Easy, Medium, Hard).
+- **Interactive Quiz Engine**:
+  - Live timer with progress indicators.
+  - Streak tracking with milestone rewards.
+  - Bookmark tricky questions during the quiz for later review.
+- **Comprehensive Results & Analytics**:
+  - Instant breakdown of accuracy percentage, total time taken, and best streak.
+  - Detailed Answer Review showing questions answered, correct solutions, and timeout statuses.
+- **Score History**: Local persistent tracking of your past quiz scores and completions.
+- **Sleek Light & Dark Themes**: Fully adapted dark and light color palettes for day or night use.
+- **Optimized Size & Fast Load**: Tree-shaken icons and ABI-split binaries keep the app lightweight (**14–16 MB**).
+
+---
+
+## ⚡ Size Optimization
+
+To ensure fast downloads and optimal performance, the app is compiled using:
+1. **ABI Splitting (`--split-per-abi`)**: Produces architecture-specific native packages rather than an oversized fat universal binary.
+2. **Icon & Font Tree-Shaking**: Strips unused font glyphs, achieving up to 99% font asset size reduction.
+3. **Dart Code Obfuscation & R8 Minification**: Compresses class and method footprints.
+
+**Resulting Sizes:**
+- `app-armeabi-v7a-release.apk`: **14.3 MB**
+- `app-arm64-v8a-release.apk`: **17.0 MB**
+
+---
 
 ## 🛠 Tech Stack & Architecture
 
-- **Framework:** [Flutter](https://flutter.dev/)
+- **Framework:** [Flutter](https://flutter.dev/) (Channel stable, 3.41.x)
+- **Language:** [Dart](https://dart.dev/)
 - **State Management:** [Provider](https://pub.dev/packages/provider)
-- **Typography:** [Google Fonts](https://pub.dev/packages/google_fonts)
-- **Architecture Pattern:** MVVM (Model-View-ViewModel) approach with Providers handling the business logic.
+- **Networking:** [http](https://pub.dev/packages/http) (Open Trivia DB API)
+- **Local Persistence:** [shared_preferences](https://pub.dev/packages/shared_preferences)
+- **Typography:** [Google Fonts](https://pub.dev/packages/google_fonts) (Nunito)
+- **Architecture Pattern:** MVVM (Model-View-ViewModel) with decoupled Providers and Services
 
-### Directory Structure
+### Project Structure
 
 ```text
 lib/
-├── models/         # Data structures (Category, Question, History)
-├── providers/      # State management (QuizProvider)
-├── screens/        # UI screens (Welcome, Config, Quiz, Results)
-├── services/       # External APIs and network calls (ApiService)
-├── widgets/        # Custom reusable UI components
-└── main.dart       # Application entry point
+├── models/         # Question, Category, QuizHistory models
+├── providers/      # QuizProvider (state logic, timer, scoring)
+├── screens/        # Welcome, CategorySelection, QuizConfig, Quiz, Results
+├── services/       # Open Trivia API integration
+├── widgets/        # Illustrations, answer review, sheets & reusable components
+└── main.dart       # App initialization & theme definitions
 ```
 
-## 🚀 Getting Started
+---
 
-Follow these steps to get a local copy up and running.
+## 🚀 Getting Started Locally
 
 ### Prerequisites
 
-- [Flutter SDK](https://docs.flutter.dev/get-started/install) (Version 3.x or above)
-- An IDE (VS Code, Android Studio, or IntelliJ)
-- A connected device or an emulator/simulator.
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) (3.22+)
+- Java JDK 17 or 21
+- Android Studio / VS Code / Connected Android Device or Emulator
 
-### Installation
+### Installation & Run
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/imamhossenbu/flutter-quizzable.git
+   cd flutter-quizzable
    ```
 
-2. **Navigate to the project directory:**
-   ```bash
-   cd simple_test_app
-   ```
-
-3. **Fetch the dependencies:**
+2. **Install dependencies:**
    ```bash
    flutter pub get
    ```
 
-4. **Run the app:**
+3. **Run on an active emulator or device:**
    ```bash
    flutter run
    ```
 
-## 🤝 Contributing
+4. **Build release APKs:**
+   ```bash
+   flutter build apk --release --split-per-abi
+   ```
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+---
 
 ## 📄 License
 
