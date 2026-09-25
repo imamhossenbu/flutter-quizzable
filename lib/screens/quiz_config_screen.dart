@@ -23,8 +23,30 @@ class QuizConfigScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new, color: isDark ? Colors.white : const Color(0xFF2C3E50), size: 20),
+          tooltip: 'Back',
           onPressed: () => Navigator.pop(context),
         ),
+        title: Text(
+          'Quiz Setup',
+          style: GoogleFonts.nunito(
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+            color: isDark ? Colors.white : const Color(0xFF2C3E50),
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(
+              isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
+              size: 22,
+            ),
+            tooltip: isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode',
+            onPressed: () => provider.toggleDarkMode(),
+            color: isDark ? const Color(0xFFFFD54F) : const Color(0xFF2C3E50),
+          ),
+          const SizedBox(width: 8),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(

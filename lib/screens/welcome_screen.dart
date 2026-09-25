@@ -72,6 +72,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        title: Text(
+          'Quizzical',
+          style: GoogleFonts.nunito(
+            fontSize: 22,
+            fontWeight: FontWeight.w900,
+            color: isDark ? Colors.white : const Color(0xFF2C3E50),
+            letterSpacing: 0.5,
+          ),
+        ),
         actions: [
           // Bookmark / Saved questions button
           IconButton(

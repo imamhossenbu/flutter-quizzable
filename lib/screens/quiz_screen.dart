@@ -46,17 +46,32 @@ class QuizScreen extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,
-              automaticallyImplyLeading: false,
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios_new, color: isDark ? Colors.white : const Color(0xFF2C3E50), size: 20),
+                tooltip: 'Quit Quiz',
+                onPressed: () => _showExitConfirmation(context, provider),
+              ),
               title: Text(
-                '$currentNum/$totalNum',
+                '${provider.selectedCategory?.cleanName ?? "Quiz"} ($currentNum/$totalNum)',
                 style: GoogleFonts.nunito(
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.w900,
                   color: isDark ? Colors.white : const Color(0xFF2C3E50),
                 ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
               centerTitle: true,
               actions: [
+                IconButton(
+                  icon: Icon(
+                    isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
+                    size: 20,
+                  ),
+                  tooltip: isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode',
+                  onPressed: () => provider.toggleDarkMode(),
+                  color: isDark ? const Color(0xFFFFD54F) : const Color(0xFF2C3E50),
+                ),
                 TextButton.icon(
                   onPressed: () => _showExitConfirmation(context, provider),
                   icon: Icon(Icons.exit_to_app, color: isDark ? Colors.white70 : const Color(0xFF2C3E50), size: 20),

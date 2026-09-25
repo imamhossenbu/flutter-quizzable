@@ -27,17 +27,17 @@ Ready-to-install Android Release APKs (optimized to **10–20 MB**):
 
 <div align="center">
 
-| Welcome Screen | Category Selection | Quiz Configuration |
+| 1. Welcome Screen | 2. Category Selection | 3. Quiz Configuration |
 | :---: | :---: | :---: |
 | <img src="screenshots/01_welcome_screen.png" width="260" alt="Welcome Screen"/> | <img src="screenshots/02_category_screen.png" width="260" alt="Category Selection Screen"/> | <img src="screenshots/03_quiz_config_screen.png" width="260" alt="Quiz Config Screen"/> |
 
-| Live Quiz Screen | Score & Results | Detailed Answer Review |
+| 4. Live Quiz Screen | 5. Results (Passed ≥ 50%) | 6. Results (Below < 50%) |
 | :---: | :---: | :---: |
-| <img src="screenshots/04_quiz_screen.png" width="260" alt="Quiz Screen"/> | <img src="screenshots/05_results_screen.png" width="260" alt="Results Screen"/> | <img src="screenshots/06_review_answers.png" width="260" alt="Answer Review Modal"/> |
+| <img src="screenshots/04_quiz_screen.png" width="260" alt="Quiz Screen"/> | <img src="screenshots/05_results_above_50.png" width="260" alt="Passed Result Screen"/> | <img src="screenshots/05_results_below_50.png" width="260" alt="Below 50 Result Screen"/> |
 
-| Score History | Dark Mode Theme |
-| :---: | :---: |
-| <img src="screenshots/07_score_history.png" width="260" alt="Score History"/> | <img src="screenshots/08_dark_mode.png" width="260" alt="Dark Mode Theme"/> |
+| 7. Detailed Answer Review | 8. Score History & Leaderboard | 9. Dark Mode Theme |
+| :---: | :---: | :---: |
+| <img src="screenshots/06_review_answers.png" width="260" alt="Answer Review Modal"/> | <img src="screenshots/07_score_history.png" width="260" alt="Score History"/> | <img src="screenshots/08_dark_mode.png" width="260" alt="Dark Mode Theme"/> |
 
 </div>
 

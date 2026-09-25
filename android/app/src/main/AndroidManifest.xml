@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="simple_test_app"
+        android:label="Quizzical"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
