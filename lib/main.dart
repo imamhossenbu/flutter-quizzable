@@ -49,6 +49,47 @@ class QuizzicalApp extends StatelessWidget {
                 ThemeData(brightness: Brightness.dark).textTheme,
               ),
             ),
+            builder: (context, appChild) {
+              final mediaQuery = MediaQuery.of(context);
+              final isWideScreen = mediaQuery.size.width > 480;
+
+              Widget content = appChild ?? const SizedBox.shrink();
+
+              if (isWideScreen) {
+                content = Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 480),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.25),
+                            blurRadius: 24,
+                            spreadRadius: 2,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: ClipRect(
+                        child: MediaQuery(
+                          data: mediaQuery.copyWith(
+                            size: Size(480, mediaQuery.size.height),
+                          ),
+                          child: content,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              }
+
+              return Container(
+                color: provider.isDarkMode
+                    ? const Color(0xFF0B1120)
+                    : const Color(0xFFE2E8F0),
+                child: content,
+              );
+            },
             home: const WelcomeScreen(),
           );
         },
